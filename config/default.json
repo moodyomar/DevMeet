@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://moody:moody123@devmeet.voi3i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtSecret": "devTeamSecretToken"
+}
