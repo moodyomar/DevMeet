@@ -57,7 +57,7 @@ const payload = {
 jwt.sign(
   payload,
   config.get('jwtSecret'),
-  {expiresIn:"3600"},
+  {expiresIn:"360000"},
   (err,token) => {
     if(err) throw err;
     res.json({token})
@@ -68,6 +68,6 @@ jwt.sign(
     res.status(500).send('server error');
   }
 
-})
+});
 
 module.exports = router;
