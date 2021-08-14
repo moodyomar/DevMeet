@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://moody:moody123@devmeet.voi3i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "devTeamSecretToken"
+  "jwtSecret": "devTeamSecretToken",
+  "githubClientId":"5068e30af0f939dc58cb",
+  "githubSecret":"ba3f437a4a740098e9973ebb2ee7e2a8df8e8a7f"
 }
