@@ -169,9 +169,9 @@ router.delete("/", auth, async (req, res) => {
 // @desc    Add profile experience
 // @access  Private
 router.put("/experience", [auth, [
-  check('title', 'Title is required').not().isEmpty(),
-  check('company', 'Company is required').not().isEmpty(),
-  check('from', 'From date is required').not().isEmpty(),
+  check('title', 'Title is required').notEmpty(),
+  check('company', 'Company is required').notEmpty(),
+  check('from', 'From date is required').notEmpty(),
 ]], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -228,10 +228,10 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 // @desc    Add profile education
 // @access  Private
 router.put("/education", [auth, [
-  check('school', 'School is required').not().isEmpty(),
-  check('degree', 'Degree is required').not().isEmpty(),
-  check('fieldofstudy', 'Field of study is required').not().isEmpty(),
-  check('from', 'From date is required').not().isEmpty(),
+  check('school', 'School is required').notEmpty(),
+  check('degree', 'Degree is required').notEmpty(),
+  check('fieldofstudy', 'Field of study is required').notEmpty(),
+  check('from', 'From date is required').notEmpty(),
 ]], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -294,11 +294,11 @@ router.get("/github/:username", (req, res) => {
       method: 'GET',
       headers: { 'user-agent': 'node.js' }
     }
-    request(options, (error,response,body) => {
-      if(error) console.error(error);
+    request(options, (error, response, body) => {
+      if (error) console.error(error);
 
-      if(response.statusCode !== 200){
-        return res.status(404).json({msg:"No Github profile found"});
+      if (response.statusCode !== 200) {
+        return res.status(404).json({ msg: "No Github profile found" });
       }
 
       res.json(JSON.parse(body));
