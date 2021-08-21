@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-import {connect, useDispatch} from 'react-redux';
-import {setAlert, setAlert2} from '../../actions/alert';
+import {connect} from 'react-redux';
+import { Link, Redirect} from "react-router-dom";
+import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types'
 
 
 
-import {
-  Link
-} from "react-router-dom";
-import {API_URL} from '../auth/api';
-
-import axios from 'axios';
-
-
-const Register = ({setAlert,register}) => { 
-const dispatch = useDispatch();
+const Register = ({setAlert,register,isAuthenticated}) => { 
+// const dispatch = useDispatch();
 
   let [formData,setFormData] = useState({
     name:'',
@@ -39,7 +32,7 @@ const dispatch = useDispatch();
     }
   }
 
-
+  if(isAuthenticated) return <Redirect to="/dashboard"/>
 return(
 
 <>
@@ -84,9 +77,14 @@ return(
 )
 }
 
-Register.prototype = {
+Register.propTypes = {
   setAlert:PropTypes.func.isRequired,
   register:PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool,
 }
 
-export default connect(null,{setAlert,register})(Register)
+const mapStateToProps = state => ({
+  isAuthenticated:state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps,{setAlert,register})(Register)

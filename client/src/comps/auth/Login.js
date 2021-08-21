@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import {
-  Link
-} from "react-router-dom";
-import {API_URL} from '../auth/api';
-import axios from 'axios';
+import {Link, Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types'
+import {login} from '../../actions/auth';
 
 
 
-const Login = () => { 
+
+const Login = ({login,isAuthenticated}) => { 
 
   let [formData,setFormData] = useState({
     email:'',
@@ -19,9 +19,10 @@ const Login = () => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    console.log('SUCCESS');
+    login(email,password);
     }
 
+    if(isAuthenticated) return <Redirect to="/dashboard"/>
 return(
 
 <>
@@ -52,4 +53,13 @@ return(
 )
 }
 
-export default Login
+Login.propTypes = {
+  login:PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated:state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps,{login})(Login)
