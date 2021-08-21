@@ -10,7 +10,7 @@ import {
   LOGIN_FAIL} from '../actions/types';
 import setAuthToken from '../utils/setAuthToken';
 
-import { API_URL } from '../comps/auth/api';
+import { API_URL } from '../utils/api';
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -31,7 +31,7 @@ try {
 }
 
 
-// Register User
+// Register User - with inside dispatch + mapStateToProps
 export const register = ({name,email,password}) => async dispatch => {
   const config = {
     headers: {
@@ -61,7 +61,7 @@ export const register = ({name,email,password}) => async dispatch => {
 
 
 
-// Login User
+// Login User - with outside dispatch + hooks
 export const login = (email,password) => async dispatch => {
   const config = {
     headers: {
@@ -77,7 +77,7 @@ export const login = (email,password) => async dispatch => {
       type:LOGIN_SUCCESS,
       payload:res.data
     })
-    dispatch(loadUser());
+    // dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors
     if(errors){
