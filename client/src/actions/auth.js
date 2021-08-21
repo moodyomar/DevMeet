@@ -7,8 +7,9 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL} from '../actions/types';
-import setAuthToken from '../utils/setAuthToken';
+  LOGIN_FAIL,
+  LOGOUT,CONSOLE_LOG
+} from '../actions/types';import setAuthToken from '../utils/setAuthToken';
 
 import { API_URL } from '../utils/api';
 
@@ -89,3 +90,12 @@ export const login = (email,password) => async dispatch => {
   }
 }
 
+
+// Logout / Clear Profile
+export const logout = () => {
+  return{type:LOGOUT}
+}
+
+export const consoleLog = () => {
+  return{type:CONSOLE_LOG}
+}
