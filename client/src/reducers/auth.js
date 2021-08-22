@@ -6,7 +6,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CONSOLE_LOG
 } from '../actions/types';
 
 const initialState = {
@@ -47,9 +46,6 @@ export default (state = initialState, { type, payload }) => {
         isAuthenticated: false,
         loading: false
       };
-      case CONSOLE_LOG:
-        console.log('LOGGING');
-        return state;
 
     default:
       return state;
