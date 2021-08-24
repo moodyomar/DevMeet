@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createProfile } from '../../actions/profile';
 
 
 const CreateProfile = () => {
@@ -31,9 +33,17 @@ const CreateProfile = () => {
     linkedin,
     youtube,
     instagram } = formData
-  const profile = useSelector(state => state.profile)
 
+  const profile = useSelector(state => state.profile)
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+    const onSubmit = e => {
+      e.preventDefault();
+      dispatch(createProfile(formData,history))
+    }
 
   return (
     <>
@@ -45,7 +55,7 @@ const CreateProfile = () => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <select name="status" value={status} onChange={e => onChange(e)}>
             <option value="0">* Select Professional Status</option>
