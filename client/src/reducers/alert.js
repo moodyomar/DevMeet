@@ -5,7 +5,7 @@ const initialState = [
 
 ];
 
-export default alert = (state = initialState, {type,payload}) => {
+export const alert = (state = initialState, {type,payload}) => {
   switch (type) {
     case SET_ALERT:
 

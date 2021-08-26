@@ -15,7 +15,7 @@ const initialState = {
   user: null
 }
 
-export default (state = initialState, { type, payload }) => {
+export const auth = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_LOADED:
       return {

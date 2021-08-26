@@ -8,7 +8,7 @@ const initialState = {
   error: {},
 }
 
-export default (state = initialState, { type, payload }) => {
+export const profile = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_PROFILE:
       return { ...state, profile: payload, loading: false }

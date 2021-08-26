@@ -14,7 +14,8 @@ export const getCurrentProfile = () => async dispatch => {
   } catch(err) {
       dispatch({
         type:PROFILE_ERROR,
-        payload:{msg:err.response.statusText,status:err.response.status}
+        // payload:{msg:err.response.statusText,status:err.response.status}
+        payload:{msg:err.response,status:err.response}
       });
   }
   
@@ -24,10 +25,8 @@ export const getCurrentProfile = () => async dispatch => {
 // Create or update profile
 export const createProfile = (formData,history,edit = false) => async dispatch => {
 try {
-  const config = {
-    headers: {'Content-Type':'application/json'}
-  }
-  const res = await axios.post(`${API_URL}/api/profile`,formData,config);
+
+  const res = await axios.post(`${API_URL}/api/profile`,formData);
 
   dispatch({
     type:GET_PROFILE,
