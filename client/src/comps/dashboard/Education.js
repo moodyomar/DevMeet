@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Moment from 'react-moment'
 import { deleteEducation } from '../../actions/profile';
 
