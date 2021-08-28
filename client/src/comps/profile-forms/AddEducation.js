@@ -52,7 +52,7 @@ return(
           <p><input type="checkbox" name="current" value="" checked={current} value={current} onChange={e => {
             setFormData({...formData,current: !current});
             toggleDisabled(!toDateDisabled);
-          }} /> {' '}Current Program</p>
+          }} /> {' '}Current School</p>
         </div>
         <div className="form-group">
           <h4>To Date</h4>
