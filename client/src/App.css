@@ -26,6 +26,11 @@ a {
   text-decoration: none;
 }
 
+strong{
+  font-weight:bolder;
+  color: var(--primary-color)
+ }
+
 ul {
   list-style: none;
 }
