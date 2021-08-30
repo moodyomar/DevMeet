@@ -17,7 +17,7 @@ return(
   <form className="form my-1"
   onSubmit={e => {
     e.preventDefault();
-    dispatch(addPost(postText))
+    dispatch(addPost({text:postText}))
     setPostText('')
   }}>
     <textarea
