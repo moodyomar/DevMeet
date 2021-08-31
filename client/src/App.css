@@ -3,7 +3,7 @@
   --primary-color: #4392CA;
   --dark-color: #010609;
   --light-color: #f4f4f4;
-  --bg-color: #eff7f6;
+  --bg-color: #ffffff;
   --text-color: #000814;
   
   --danger-color: #dc3545;
@@ -80,6 +80,10 @@ img {
 
 .text-dark {
   color: var(--dark-color);
+}
+
+.landing-inner span{
+  color: var(--primary-color);
 }
 
 /* Padding */

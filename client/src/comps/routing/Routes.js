@@ -13,6 +13,7 @@ import Profile from '../profile/Profile';
 import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
+import AutoScrollUp from '../routing/AutoScrollUp'
 
 const Routes = () => { 
 
@@ -20,6 +21,7 @@ return(
 
   <section className="container">
   <Alert />
+<AutoScrollUp>
   <Switch>
     <Route exact path="/register" component={Register} />
     <Route exact path="/login" component={Login} />
@@ -34,6 +36,7 @@ return(
     <PrivateRoute exact path="/posts/:id" component={Post} />
     <Route path="*" component={NotFound} />
   </Switch>
+  </AutoScrollUp>
 </section>
 
 )
