@@ -1,10 +1,10 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
+  --primary-color: #4392CA;
+  --dark-color: #010609;
   --light-color: #f4f4f4;
-  --bg-color: #fff;
-  --text-color: #333;
+  --bg-color: #eff7f6;
+  --text-color: #000814;
   
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -145,6 +145,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 150px;
 }
 
 .badge {
@@ -529,6 +530,11 @@ button {
     text-align: center;
     justify-content: center;
   }
+
+.icon-sm{
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
 
   .navbar h1 {
     margin-bottom: 1rem;

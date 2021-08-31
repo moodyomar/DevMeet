@@ -5,7 +5,7 @@
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 55px 50px;
-
+border-top: 1px solid var(--primary-color);;
 }
 
 .footer-distributed .footer-left,
@@ -129,7 +129,7 @@
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
-	background-color:  var(--dark-color);
+	background-color: var(--dark-color);
 	border-radius: 2px;
 	font-size: 20px;
 	color: var(--light-color);

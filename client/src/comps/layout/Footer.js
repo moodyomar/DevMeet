@@ -29,7 +29,7 @@ const Footer = () => {
 
 				<div className="icon-row">
 					<i className="fa fa-map-marker"></i>
-					<p><span>21 McLovin Street</span> Haifa, Israel</p>
+					<p><span>21 McMoody Street</span> Haifa, Israel</p>
 				</div>
 
 				<div className="icon-row">
