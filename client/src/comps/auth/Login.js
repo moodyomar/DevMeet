@@ -25,7 +25,7 @@ const Login = () => {
 return(
 
 <>
-<h1 className="large text-primary">Sign In</h1>
+<h1 className="large text-primary" data-aos="fade-right">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign Into your Account</p>
       <form className="form" onSubmit={e => onSubmit(e)}>
        

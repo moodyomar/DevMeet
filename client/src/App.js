@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 // comps
 import Landing from './comps/layout/Landing';
 import Navbar from './comps/layout/Navbar';
@@ -21,6 +23,11 @@ if (localStorage.token) {
 }
 
 const App = () => {
+  AOS.init({
+    offset: 200, 
+    duration: 600, 
+  });
+
 
   useEffect(() => {
     store.dispatch(loadUser())

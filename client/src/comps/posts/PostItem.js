@@ -11,7 +11,7 @@ const PostItem = ({ post: { _id, text, name, avatar, user, likes, comments, date
   const auth = useSelector(state => state.auth);
 
   return (
-    <div className="post bg-white p-1 my-1">
+    <div className="post bg-white p-1 my-1" data-aos="zoom-in">
       <div>
         <Link to={`/profile/${user}`}>
           <img

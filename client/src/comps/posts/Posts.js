@@ -18,14 +18,14 @@ return(
 
 loading ? <Spinner/> : (
   <>
-<h1 className="large text-primary">Posts</h1>
+<h1 className="large text-primary" data-aos="fade-right">Posts</h1>
 <p className="lead">
   <i className="fas fa-user"></i> Welcome to the community
 </p>
 <PostForm />
 <div className="posts">
   {posts.map(post => (
-    <PostItem key={post._id} post={post} showActions={true}/>
+    <PostItem key={post._id} post={post} showActions={true} />
   ))}
 </div>
   </>

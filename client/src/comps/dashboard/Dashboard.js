@@ -20,7 +20,7 @@ const Dashboard = () => {
   },[dispatch])
 
   return loading && profile === null ? <Spinner /> : <>
-    <h1 className="large text-primary">Dashboard</h1>
+    <h1 className="large text-primary" data-aos="fade-right">Dashboard</h1>
     <p className="lead"><i className="fas fa-user"></i> Welcome {user && user.name}</p>
     {profile !== null ? (
     <>
