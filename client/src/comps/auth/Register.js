@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
+import { toast } from "react-toastify";
 import { Link, Redirect} from "react-router-dom";
-import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import PropTypes from 'prop-types'
 
 
 
-const Register = ({setAlert,register,isAuthenticated}) => { 
+const Register = ({register,isAuthenticated}) => { 
 // const dispatch = useDispatch();
 
   let [formData,setFormData] = useState({
@@ -24,9 +24,7 @@ const Register = ({setAlert,register,isAuthenticated}) => {
     e.preventDefault();
     if(password !== password2){
       // 1st way
-      setAlert("Password doesn't match",'danger');
-      // 2nd way
-      // dispatch(setAlert2("Password doesn't match",'danger'))
+      toast.error("Password doesn't match");
     }else{
       register({name,email,password})
     }
@@ -78,7 +76,6 @@ return(
 }
 
 Register.propTypes = {
-  setAlert:PropTypes.func.isRequired,
   register:PropTypes.func.isRequired,
   isAuthenticated:PropTypes.bool,
 }
@@ -87,4 +84,4 @@ const mapStateToProps = state => ({
   isAuthenticated:state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps,{setAlert,register})(Register)
+export default connect(mapStateToProps,{register})(Register)

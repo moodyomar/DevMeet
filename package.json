@@ -8,7 +8,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-},
+  },
   "keywords": [],
   "author": "Mohammad Shihab",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.5",
+    "react-toastify": "^8.0.2",
     "request": "^2.88.2"
   },
   "devDependencies": {

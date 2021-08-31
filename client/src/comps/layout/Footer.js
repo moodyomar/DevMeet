@@ -53,10 +53,10 @@ const Footer = () => {
 
 				<div className="footer-icons">
 
-					<a href="#"><i className="fa fa-facebook"></i></a>
-					<a href="#"><i className="fa fa-twitter"></i></a>
-					<a href="#"><i className="fa fa-linkedin"></i></a>
-					<a href="#"><i className="fa fa-github"></i></a>
+					<a href="https://www.facebook.com/Moodyomar"><i className="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/moodyomarz"><i className="fa fa-twitter"></i></a>
+					<a href="https://il.linkedin.com/in/moodyomar"><i className="fa fa-linkedin"></i></a>
+					<a href="https://github.com/moodyomar"><i className="fa fa-github"></i></a>
 
 				</div>
 

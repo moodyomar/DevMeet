@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import {Link, Redirect} from "react-router-dom";
-// import {connect} from 'react-redux';
 import {useDispatch, useSelector} from 'react-redux';
-// import PropTypes from 'prop-types'
 import {login} from '../../actions/auth';
 
 
-
-
-// const Login = ({login,isAuthenticated}) =>
 const Login = () => { 
   let dispatch = useDispatch();
   let isAuthenticated = useSelector(state => state.auth.isAuthenticated)
@@ -22,11 +17,11 @@ const Login = () => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    // login(email,password);
     dispatch(login(email,password))
     }
     
     if(isAuthenticated) return <Redirect to="/dashboard"/>
+    
 return(
 
 <>

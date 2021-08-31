@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setAlert} from '../actions/alert';
+import { toast } from "react-toastify";
 
 import {
   REGISTER_SUCCESS,
@@ -42,11 +42,12 @@ export const register = ({name,email,password}) => async dispatch => {
       type:REGISTER_SUCCESS,
       payload:res.data
     })
-    dispatch(loadUser());
+    dispatch(loadUser()); 
+    toast.success(`Welcome to DevMeet ${name.split(' ')[0]} 👋`)
   } catch (err) {
     const errors = err.response.data.errors
     if(errors){
-      errors.forEach(error => dispatch(setAlert(error.msg,'danger')))
+      errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
       type:REGISTER_FAIL
@@ -66,10 +67,11 @@ export const login = (email,password) => async dispatch => {
       payload:res.data
     })
     dispatch(loadUser());
+    toast.success("Logged in successfully")
   } catch (err) {
     const errors = err.response.data.errors
     if(errors){
-      errors.forEach(error => dispatch(setAlert(error.msg,'danger')))
+      errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
       type:LOGIN_FAIL
@@ -82,4 +84,5 @@ export const login = (email,password) => async dispatch => {
 export const logout = () => dispatch => {
   dispatch({type:CLEAR_PROFILE})
   dispatch({type:LOGOUT})
+  toast.dark("See you later 👋")
 }

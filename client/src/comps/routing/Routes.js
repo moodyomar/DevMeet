@@ -1,7 +1,6 @@
 import React from 'react';
 import {Switch,Route} from "react-router-dom";
 import Login from '../auth/Login';
-import Alert from '../layout/Alert';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
 import ProfileForm from '../profile-forms/ProfileForm';
@@ -20,7 +19,6 @@ const Routes = () => {
 return(
 
   <section className="container">
-  <Alert />
 <AutoScrollUp>
   <Switch>
     <Route exact path="/register" component={Register} />

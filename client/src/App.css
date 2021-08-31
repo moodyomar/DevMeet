@@ -161,58 +161,44 @@ img {
   color: var(--text-color);;
 }
 
-.alert {
-  padding: 0.8rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: var(--text-color);;
-}
-
 .btn-primary,
 .bg-primary,
-.badge-primary,
-.alert-primary {
+.badge-primary {
   background: var(--primary-color);
   color: var(--bg-color);;
 }
 
 .btn-light,
 .bg-light,
-.badge-light,
-.alert-light {
+.badge-light {
   background: var(--light-color);
   color: var(--text-color);;
 }
 
 .btn-dark,
 .bg-dark,
-.badge-dark,
-.alert-dark {
+.badge-dark {
   background: var(--dark-color);
   color: var(--bg-color);;
 }
 
 .btn-danger,
 .bg-danger,
-.badge-danger,
-.alert-danger {
+.badge-danger{
   background: var(--danger-color);
   color: var(--bg-color);;
 }
 
 .btn-success,
 .bg-success,
-.badge-success,
-.alert-success {
+.badge-success {
   background: var(--success-color);
   color: var(--bg-color);;
 }
 
 .btn-white,
 .bg-white,
-.badge-white,
-.alert-white {
+.badge-white{
   background: var(--bg-color);;
   color: var(--text-color);;
   border: #ccc solid 1px;

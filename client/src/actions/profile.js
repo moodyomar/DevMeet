@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { API_URL } from '../utils/api';
-import { setAlert } from './alert';
+import { toast } from "react-toastify";
 import { CLEAR_PROFILE, ACCOUNT_DELETED, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, GET_PROFILES, GET_REPOS } from './types';
 
 // Get current user profile
@@ -87,14 +87,14 @@ export const createProfile = (formData, history, edit = false) => async dispatch
       type: GET_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile created', 'success'));
+    toast.success(edit ? 'Profile Updated' : 'Profile created');
     if (!edit) {
       history.push('/dashboard');
     }
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+      errors.forEach(error => toast.error(error.msg))
     }
 
     dispatch({
@@ -114,12 +114,12 @@ export const addExperience = (formData, history) => async dispatch => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Experience Added', 'success'));
+    toast.success('Experience Added');
     history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+      errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -138,12 +138,12 @@ export const addEducation = (formData, history) => async dispatch => {
       type: UPDATE_PROFILE,
       payload: res.data
     });
-    dispatch(setAlert('Education Added', 'success'));
+    toast.success('Education Added');
     history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+      errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
       type: PROFILE_ERROR,
@@ -160,7 +160,7 @@ export const deleteExperience = id => async dispatch => {
       type:UPDATE_PROFILE,
       payload:res.data
     })
-    dispatch(setAlert('Experience Removed', 'danger'));
+    toast.success('Experience Removed');
 
   } catch (err) {
     dispatch({
@@ -178,7 +178,7 @@ export const deleteEducation = id => async dispatch => {
       type:UPDATE_PROFILE,
       payload:res.data
     })
-    dispatch(setAlert('Education Removed', 'danger'));
+    toast.warning('Education Removed');
 
   } catch (err) {
     dispatch({
@@ -195,7 +195,7 @@ export const deleteAccount = () => async dispatch => {
       await axios.delete(`${API_URL}/api/profile`)
       dispatch({type:CLEAR_PROFILE})
       dispatch({type:ACCOUNT_DELETED})
-      dispatch(setAlert('Your account has been permanatly deleted'));
+      toast.warning('Your account has been permanatly deleted');
   
     } catch (err) {
       dispatch({

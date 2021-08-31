@@ -28,11 +28,11 @@ const Navbar = () => {
 
   const guestLinks = (
     <ul>
-      <li><Link to="/profiles"><i class="fa icon-sm fa-users" aria-hidden="true"></i>{' '}
+      <li><Link to="/profiles"><i className="fa icon-sm fa-users" aria-hidden="true"></i>{' '}
         <span className="hide-sm">Developers</span></Link></li>
-      <li><Link to="/register"><i class="fa icon-sm fa-user-plus" aria-hidden="true"></i>{' '}
+      <li><Link to="/register"><i className="fa icon-sm fa-user-plus" aria-hidden="true"></i>{' '}
         <span className="hide-sm">Register</span></Link></li>
-      <li><Link to="/login"><i class="fa icon-sm fa-sign-in" aria-hidden="true"></i>{' '}
+      <li><Link to="/login"><i className="fa icon-sm fa-sign-in" aria-hidden="true"></i>{' '}
         <span className="hide-sm">Login</span></Link></li>
     </ul>
   )

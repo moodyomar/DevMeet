@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {setAlert} from './alert';
+import { toast } from "react-toastify";
 import { ADD_COMMENT, ADD_POST, DELETE_POST, GET_POST, GET_POSTS, POST_ERROR, REMOVE_COMMENT, UPDATE_LIKES } from "../actions/types"
 import { API_URL } from '../utils/api';
 
@@ -63,7 +63,7 @@ export const deletePost = postId => async dispatch => {
         type:DELETE_POST,
         payload:postId
       })
-      dispatch(setAlert('Post Removed','success'))
+      toast.warning('Post Removed')
     } catch (err) {
       dispatch({
         type: POST_ERROR,
@@ -77,13 +77,12 @@ export const deletePost = postId => async dispatch => {
 export const addPost = postText => async dispatch => {
     try {
       const res = await axios.post(`${API_URL}/api/posts`,postText);
-      console.log('ininin');
-      
+  
       dispatch({
         type:ADD_POST,
         payload:res.data
       })
-      dispatch(setAlert('Post Created!','success'))
+      toast.success('Post Created')
     } catch (err) {
       dispatch({
         type: POST_ERROR,
@@ -116,7 +115,7 @@ export const addComment = (postId,fromData) => async dispatch => {
       type:ADD_COMMENT,
       payload:res.data
     })
-    dispatch(setAlert('Comment added','success'))
+    toast.success('Comment added')
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -134,7 +133,7 @@ export const deleteComment = (postId,commentId) => async dispatch => {
       type:REMOVE_COMMENT,
       payload:commentId
     })
-    dispatch(setAlert('Comment Removed!','success'))  
+    toast.warning('Comment Removed')  
   } catch (err) {
     dispatch({
       type: POST_ERROR,
