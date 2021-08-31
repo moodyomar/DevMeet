@@ -11,6 +11,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
+import Footer from './comps/layout/Footer';
 
 
 if (localStorage.token) {
@@ -27,11 +28,18 @@ const App = () => {
     <>
       <Provider store={store}>
         <Router>
+          <header>
           <Navbar />
+          </header>
+          <main>
           <Switch>
           <Route exact path="/" component={Landing} />
           <Route component={Routes}/>
           </Switch>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
         </Router>
       </Provider>
     </>
