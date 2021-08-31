@@ -1,14 +1,11 @@
-
 .footer-distributed{
 	background-color: #292c2f;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
-	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-
 	padding: 55px 50px;
-	margin-top: auto;
+
 }
 
 .footer-distributed .footer-left,
@@ -23,20 +20,24 @@
 }
 
 .footer-distributed h3{
-	color:  #ffffff;
+	color: var(--light-color);
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
 }
 
 .footer-distributed h3 span{
-	color:  #5383d3;
+	color: var(--primary-color);
 }
 
 
 .footer-distributed .footer-links{
-	color:  #ffffff;
+	color: var(--light-color);
 	margin: 20px 0 12px;
 	padding: 0;
+}
+
+.footer-distributed .footer-links a:hover{
+  color: var(--primary-color);
 }
 
 .footer-distributed .footer-links a{
@@ -59,17 +60,22 @@
 }
 
 .footer-distributed .footer-center i{
-	background-color:  #33383b;
-	color: #ffffff;
+	background-color:  var(--dark-color);
+	color: var(--light-color);
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
 	border-radius: 50%;
-	text-align: center;
-	line-height: 42px;
 	margin: 10px 15px;
-	vertical-align: middle;
+  display: grid;
+  place-items: center;
+  transition: .2s all ease-out;
 }
+.icon-row{
+  display: flex;
+  align-items: center;
+}
+
 
 .footer-distributed .footer-center i.fa-envelope{
 	font-size: 17px;
@@ -78,7 +84,7 @@
 
 .footer-distributed .footer-center p{
 	display: inline-block;
-	color: #ffffff;
+	color: var(--light-color);
 	vertical-align: middle;
 	margin:0;
 }
@@ -91,8 +97,7 @@
 }
 
 .footer-distributed .footer-center p a{
-	color:  #5383d3;
-	text-decoration: none;;
+	color:  #fff;
 }
 
 .footer-distributed .footer-right{
@@ -124,16 +129,21 @@
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
-	background-color:  #33383b;
+	background-color:  var(--dark-color);
 	border-radius: 2px;
-
 	font-size: 20px;
-	color: #ffffff;
+	color: var(--light-color);
 	text-align: center;
 	line-height: 35px;
-
-	margin-right: 3px;
+	margin-right: 10px;
 	margin-bottom: 5px;
+  transition: .2s all ease-out;
+}
+.footer-distributed .footer-icons a:hover ,
+.footer-distributed .footer-center i:hover{
+transform: scale(1.2);
+transition: .25s all ease-in;
+color: var(--primary-color);
 }
 
 

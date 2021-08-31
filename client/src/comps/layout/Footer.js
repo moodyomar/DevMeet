@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styling/Footer.css'
+import {Link} from "react-router-dom";
 
 const Footer = () => {
 
@@ -12,13 +13,13 @@ const Footer = () => {
 				<h3>Dev<span>Meet</span></h3>
 
 				<p className="footer-links">
-					<a href="#">Home</a>
+					<Link to="/">Home</Link>
 					{' '} | {' '}
-					<a href="#">Developers</a>
+					<Link to="/developers">Developers</Link>
 					{' '} | {' '}
-					<a href="#">Login</a>
+					<Link to="/login">Login</Link>
 					{' '} | {' '}
-					<a href="#">Register</a>
+					<Link to="/register">Register</Link>
 				</p>
 
 				<p className="footer-company-name">DevMeet &copy; 2021</p>
@@ -26,17 +27,17 @@ const Footer = () => {
 
 			<div className="footer-center">
 
-				<div>
+				<div className="icon-row">
 					<i className="fa fa-map-marker"></i>
 					<p><span>21 McLovin Street</span> Haifa, Israel</p>
 				</div>
 
-				<div>
+				<div className="icon-row">
 					<i className="fa fa-phone"></i>
 					<p>+972 04 123456</p>
 				</div>
 
-				<div>
+				<div className="icon-row">
 					<i className="fa fa-envelope"></i>
 					<p><a href="mailto:support@company.com">contact@devmeet.com</a></p>
 				</div>
