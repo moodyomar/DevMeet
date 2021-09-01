@@ -15,7 +15,7 @@ const Footer = () => {
 				<p className="footer-links">
 					<Link to="/">Home</Link>
 					{' '} | {' '}
-					<Link to="/developers">Developers</Link>
+					<Link to="/profiles">Developers</Link>
 					{' '} | {' '}
 					<Link to="/login">Login</Link>
 					{' '} | {' '}
