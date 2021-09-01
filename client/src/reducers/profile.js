@@ -15,7 +15,7 @@ export const profile = (state = initialState, { type, payload }) => {
       return { ...state, profile: payload, loading: false }
 
     case GET_PROFILES:
-      return { ...state, profiles:payload,loading:false }
+      return { ...state, profiles:payload.reverse(),loading:false }
 
     case GET_REPOS:
       return { ...state, repos:payload,loading:false }
