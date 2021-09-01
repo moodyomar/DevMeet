@@ -19,7 +19,7 @@ const Profiles = () => {
       {loading ? <Spinner /> : 
       <>
         <h1 className="large text-primary" data-aos="fade-right">Developers</h1>
-        <p className="lead">
+        <p className="lead" data-aos="fade-in" data-aos-duration="2000">
           <i className="fab fa-connectdevelop"></i> Browse and connect with developers
         </p>
         <div className="profiles">

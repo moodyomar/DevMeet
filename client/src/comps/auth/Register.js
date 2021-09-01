@@ -35,7 +35,7 @@ return(
 
 <>
 <h1 className="large text-primary" data-aos="fade-right">Sign Up</h1>
-      <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+      <p className="lead" data-aos="fade-in" data-aos-duration="2000"><i className="fas fa-user"></i> Create Your Account</p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)}  />

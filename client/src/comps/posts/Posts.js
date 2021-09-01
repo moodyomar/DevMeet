@@ -19,7 +19,7 @@ return(
 loading ? <Spinner/> : (
   <>
 <h1 className="large text-primary" data-aos="fade-right">Posts</h1>
-<p className="lead">
+<p className="lead" data-aos="fade-in" data-aos-duration="2000">
   <i className="fas fa-user"></i> Welcome to the community
 </p>
 <PostForm />

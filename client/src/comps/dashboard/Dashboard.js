@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   return loading && profile === null ? <Spinner /> : <>
     <h1 className="large text-primary" data-aos="fade-right">Dashboard</h1>
-    <p className="lead"><i className="fas fa-user"></i> Welcome {user && user.name}</p>
+    <p className="lead" data-aos="fade-in" data-aos-duration="2000"><i className="fas fa-user"></i> Welcome {user && user.name}</p>
     {profile !== null ? (
     <>
     <DashboardActions />
