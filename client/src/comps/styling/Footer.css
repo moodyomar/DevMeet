@@ -153,7 +153,12 @@ color: var(--primary-color);
 		font: bold 14px sans-serif;
 	
 	}
-
+.icon-row{
+  flex-direction: column;
+}
+.icon-row p,.icon-row p a{
+  color:  #92999f !important;
+}
 	.footer-distributed .footer-left,
 	.footer-distributed .footer-center,
 	.footer-distributed .footer-right{
