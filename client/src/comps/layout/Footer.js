@@ -1,68 +1,89 @@
 import React from 'react';
 import '../styling/Footer.css'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 const Footer = () => {
+
+  let { isAuthenticated, loading } = useSelector(state => state.auth)
+  let dispatch = useDispatch()
+  const authLinks = (
+    <ul>
+      <li><Link to="/profiles">
+       Developers</Link></li>
+      <li><Link to="/posts">
+        Posts</Link></li>
+      <li><Link to="/dashboard">
+        Dashboard</Link></li>
+    </ul>
+   
+  )
+
+  const guestLinks = (
+    <ul>
+      <li><Link to="/profiles">
+       Developers</Link></li>
+      <li><Link to="/register">
+        Register</Link></li>
+      <li><Link to="/login">
+        Login</Link></li>
+    </ul>
+  )
 
   return (
 
     <footer className="footer-distributed">
 
-			<div className="footer-left">
+      <div className="footer-left">
 
-				<h3>Dev<span>Meet</span></h3>
+        <h3>Dev<span>Meet</span></h3>
 
-				<p className="footer-links">
-					<Link to="/">Home</Link>
-					{' '} | {' '}
-					<Link to="/profiles">Developers</Link>
-					{' '} | {' '}
-					<Link to="/login">Login</Link>
-					{' '} | {' '}
-					<Link to="/register">Register</Link>
-				</p>
+        <p className="footer-links">
+          {!loading && (<>{isAuthenticated ? authLinks : guestLinks}</>)}
 
-				<p className="footer-company-name">DevMeet &copy; 2021</p>
-			</div>
+        </p>
 
-			<div className="footer-center">
+        <p className="footer-company-name">DevMeet &copy; 2021</p>
+      </div>
 
-				<div className="icon-row">
-					<i className="fa fa-map-marker"></i>
-					<p><span>21 McMoody Street</span> Haifa, Israel</p>
-				</div>
+      <div className="footer-center">
 
-				<div className="icon-row">
-					<i className="fa fa-phone"></i>
-					<p>+972 04 123456</p>
-				</div>
+        <div className="icon-row">
+          <i className="fa fa-map-marker"></i>
+          <p><span>21 McMoody Street</span> Haifa, Israel</p>
+        </div>
 
-				<div className="icon-row">
-					<i className="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">contact@devmeet.com</a></p>
-				</div>
+        <div className="icon-row">
+          <i className="fa fa-phone"></i>
+          <p>+972 04 123456</p>
+        </div>
 
-			</div>
+        <div className="icon-row">
+          <i className="fa fa-envelope"></i>
+          <p><a href="mailto:support@company.com">contact@devmeet.com</a></p>
+        </div>
 
-			<div className="footer-right">
+      </div>
 
-				<p className="footer-company-about">
-					<span>About the company</span>
-					DevMeet is a social platform for web developers, graphic designers, web designers &amp; DevOps.
-				</p>
+      <div className="footer-right">
 
-				<div className="footer-icons">
+        <p className="footer-company-about">
+          <span>About the company</span>
+          DevMeet is a social platform for web developers, graphic designers, web designers &amp; DevOps.
+        </p>
 
-					<a href="https://www.facebook.com/Moodyomar"><i className="fa fa-facebook"></i></a>
-					<a href="https://twitter.com/moodyomarz"><i className="fa fa-twitter"></i></a>
-					<a href="https://il.linkedin.com/in/moodyomar"><i className="fa fa-linkedin"></i></a>
-					<a href="https://github.com/moodyomar"><i className="fa fa-github"></i></a>
+        <div className="footer-icons">
 
-				</div>
+          <a href="https://www.facebook.com/Moodyomar"><i className="fa fa-facebook"></i></a>
+          <a href="https://twitter.com/moodyomarz"><i className="fa fa-twitter"></i></a>
+          <a href="https://il.linkedin.com/in/moodyomar"><i className="fa fa-linkedin"></i></a>
+          <a href="https://github.com/moodyomar"><i className="fa fa-github"></i></a>
 
-			</div>
+        </div>
 
-		</footer>
+      </div>
+
+    </footer>
 
   )
 }
