@@ -4,11 +4,10 @@
   "description": "Social network for developers",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
+    "client": "npm start --prefix client"
+    },
   "keywords": [],
   "author": "Mohammad Shihab",
   "license": "ISC",
