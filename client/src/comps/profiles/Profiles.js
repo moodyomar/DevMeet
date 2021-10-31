@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
 
@@ -8,10 +8,20 @@ import ProfileItem from './ProfileItem';
 const Profiles = () => {
   const dispatch = useDispatch();
   const { profiles, loading } = useSelector(state => state.profile)
+  let [status,setStatus] = useState('')
+  let [sorting,setSorting] = useState({
+  a:1,
+  b:-1
+})
 
   useEffect(() => {
     dispatch(getProfiles())
-  }, [dispatch]);
+    console.log(status);
+    
+  }, [dispatch,status]);
+
+console.log(profiles);
+
 
   return (
 
@@ -22,9 +32,18 @@ const Profiles = () => {
         <p className="lead" data-aos="fade-in" data-aos-duration="2000">
           <i className="fab fa-connectdevelop"></i> Browse and connect with developers
         </p>
+        <div className="searchNdFilter form my-1">
+        <input type="text" placeholder="Search By Position Junior Developer..." onChange={e => setStatus(e.target.value)} />
+        <select name="" id="">
+          <option value="recently-joined">Recently Joined</option>
+          <option value="first-joined">First Joined</option>
+        </select>
+        </div>
         <div className="profiles">
           {profiles.length > 0 ? (
-            profiles.map(profile => (
+            profiles
+            .filter(profile => !status ? profile : profile.status.toLowerCase().includes(status.toLowerCase()))
+            .map(profile => (
               <ProfileItem key={profile._id} profile={profile}/>
             ))
           ) : <h4>No profiles found ....</h4>}
