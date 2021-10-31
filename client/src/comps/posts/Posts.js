@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../actions/post';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
+import '../styles/Posts.css'
 
 
 const Posts = () => { 

@@ -32,7 +32,7 @@ const Profiles = () => {
           <i className="fab fa-connectdevelop"></i> Browse and connect with developers
         </p>
         <div className="searchNdFilter form my-1">
-        <input type="text" placeholder="Search By Position : Senior Developer..." onChange={e => setStatus(e.target.value)} />
+        <input className="my-1" type="text" placeholder="Search By Position : Senior Developer..." onChange={e => setStatus(e.target.value)} />
         <select onChange={e => {
           e.target.value === 'recently-joined' ? setSorting({a:-1,b:1}) : setSorting({a:1,b:-1})
         }}>

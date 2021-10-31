@@ -8,6 +8,7 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './profileEducation';
 import ProfileGithub from './ProfileGithub';
+import '../styles/Profiles.css'
 
 
 const Profile = ({ match }) => {

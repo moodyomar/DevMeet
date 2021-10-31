@@ -4,6 +4,7 @@ import {
   Link
 } from "react-router-dom";
 import { logout } from '../../actions/auth';
+import '../styles/Navbar.css'
 
 
 const Navbar = () => {
