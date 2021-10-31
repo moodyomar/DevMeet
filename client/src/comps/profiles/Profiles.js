@@ -10,17 +10,16 @@ const Profiles = () => {
   const { profiles, loading } = useSelector(state => state.profile)
   let [status,setStatus] = useState('')
   let [sorting,setSorting] = useState({
-  a:1,
-  b:-1
+  a:-1,
+  b:1
 })
 
   useEffect(() => {
     dispatch(getProfiles())
-    console.log(status);
     
   }, [dispatch,status]);
 
-console.log(profiles);
+  const sortBy = (a,b) => Number(a.date.replace( /^\D+/g, '')) < Number(b.date.replace( /^\D+/g, '')) ? sorting.a : sorting.b
 
 
   return (
@@ -33,8 +32,10 @@ console.log(profiles);
           <i className="fab fa-connectdevelop"></i> Browse and connect with developers
         </p>
         <div className="searchNdFilter form my-1">
-        <input type="text" placeholder="Search By Position Junior Developer..." onChange={e => setStatus(e.target.value)} />
-        <select name="" id="">
+        <input type="text" placeholder="Search By Position : Senior Developer..." onChange={e => setStatus(e.target.value)} />
+        <select onChange={e => {
+          e.target.value === 'recently-joined' ? setSorting({a:-1,b:1}) : setSorting({a:1,b:-1})
+        }}>
           <option value="recently-joined">Recently Joined</option>
           <option value="first-joined">First Joined</option>
         </select>
@@ -43,6 +44,7 @@ console.log(profiles);
           {profiles.length > 0 ? (
             profiles
             .filter(profile => !status ? profile : profile.status.toLowerCase().includes(status.toLowerCase()))
+            .sort((a,b) => sortBy(a,b))
             .map(profile => (
               <ProfileItem key={profile._id} profile={profile}/>
             ))
