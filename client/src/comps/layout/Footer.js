@@ -1,12 +1,11 @@
 import React from 'react';
-import '../styling/Footer.css'
+import '../styles/Footer.css'
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
 
   let { isAuthenticated, loading } = useSelector(state => state.auth)
-  let dispatch = useDispatch()
   const authLinks = (
     <ul>
       <li><Link to="/profiles">
