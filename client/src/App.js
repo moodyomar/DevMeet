@@ -49,7 +49,7 @@ const App = () => {
           <footer>
             <Footer />
           </footer>
-          <ToastContainer position="bottom-left" />
+          <ToastContainer style={{marginTop:'30px'}} position="top-left" />
         </Router>
       </Provider>
     </>

@@ -28,8 +28,8 @@ let [unvalidPass,setUnvalidPass] = useState(false);
     .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)) ? setUnvalidEmail(true) : setUnvalidEmail(false);
     (e.target.name === 'name' && !e.target.value
     .match(/([A-Za-z])\w+/g) ? setUnvalidName(true) : setUnvalidName(false));
-    (e.target.name === 'password' && e.target.value.length < 6 ? setUnvalidPass(true) : setUnvalidPass(false));
-    console.log(unvalidName);
+    (e.target.name === 'password' && !e.target.value
+    .match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/) ? setUnvalidPass(true) : setUnvalidPass(false));
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
@@ -68,7 +68,7 @@ return(
             placeholder="Password"
             name="password"
             value={password} onChange={e => onChange(e)} />
-            {unvalidPass && <span style={{color:'red'}}>Enter min 6 charts password</span>}
+            {unvalidPass && <span style={{color:'red'}}>Let's avoid hackers, Password must be 8 chars, at least one letter, one number and one special character</span>}
         </div>
         <div className="form-group">
           <input
