@@ -37,10 +37,10 @@ const Footer = () => {
 
         <h3>Dev<span>Meet</span></h3>
 
-        <p className="footer-links">
+        <ul className="footer-links">
           {!loading && (<>{isAuthenticated ? authLinks : guestLinks}</>)}
 
-        </p>
+        </ul>
 
         <p className="footer-company-name">DevMeet &copy; 2021</p>
       </div>

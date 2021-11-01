@@ -8,6 +8,11 @@
   line-height: 1.8;
   margin-bottom: 1rem;
 }
+.filterBySkillWrapper{
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+}
 
 /* Profile Page */
 .profile-grid {
@@ -104,6 +109,10 @@
 
 /* Mobile Styles */
 @media (max-width: 700px) {
+
+  .skills-filtering-label{
+    display: none;
+  }
 
   .profile {
     grid-template-columns: 1fr;
