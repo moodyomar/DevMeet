@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import {connect} from 'react-redux';
 import { toast } from "react-toastify";
 import { Link, Redirect} from "react-router-dom";
@@ -23,24 +23,34 @@ let [unvalidEmail,setUnvalidEmail] = useState(false);
 let [unvalidPass,setUnvalidPass] = useState(false);
 
 
+
   const onChange = e => {
-    (e.target.name === 'email' && !e.target.value
-    .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)) ? setUnvalidEmail(true) : setUnvalidEmail(false);
-    (e.target.name === 'name' && !e.target.value
-    .match(/([A-Za-z])\w+/g) ? setUnvalidName(true) : setUnvalidName(false));
-    (e.target.name === 'password' && !e.target.value
-    .match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/) ? setUnvalidPass(true) : setUnvalidPass(false));
+    switch (e.target.name) {
+      case 'email':
+        (e.target.value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)) ?
+        setUnvalidEmail(false) : setUnvalidEmail(true)
+        break;
+      case 'name':
+        (e.target.value.match(/([A-Za-z])\w+/g)) ?
+        setUnvalidName(false) : setUnvalidName(true)
+        break;
+        
+      case 'password':
+        (e.target.value.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)) ?
+        setUnvalidPass(false) : setUnvalidPass(true)
+        break;
+        
+      default:
+        break;
+    }
+
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    if(password !== password2){
-      toast.error("Password doesn't match");
-    }else if(unvalidName) toast.error("Enter a valid name! Min 2 charts");
-    else{
-      register({name,email,password})
-    }
+    if(unvalidEmail || unvalidName || unvalidPass !== false) toast.warning("Please Make sure you entered valid and strong credintals");
+    else register({name,email,password});
   }
 
   if(isAuthenticated) return <Redirect to="/dashboard"/>
@@ -76,6 +86,7 @@ return(
             value={password2} onChange={e => onChange(e)} 
             placeholder="Confirm Password"
             name="password2"/>
+            {password !== password2 && <span style={{color:'red'}}>Please make sure you type the same password above!</span>}
         </div>
         <input type="submit" className="btn bg-dark" value="Register" />
       </form>
