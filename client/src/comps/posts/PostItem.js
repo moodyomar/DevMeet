@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import Moment from 'react-moment'
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,8 +7,15 @@ import { addLike, deletePost, removeLike } from '../../actions/post';
 
 const PostItem = ({ post: { _id, text, name, avatar, user, likes, comments, date},showActions }) => {
 
+  const [onLike,setOnLike] = useState(false)
+  const [onDisLike,setOnDisLike] = useState(false)
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
+
+  useEffect(() => {
+console.log(likes);
+
+},[likes.length])
 
   return (
     <div className="post bg-white p-1 my-1" data-aos="zoom-in">
@@ -17,7 +24,7 @@ const PostItem = ({ post: { _id, text, name, avatar, user, likes, comments, date
           <img
             className="round-img"
             src={avatar}
-            alt=""
+            alt={`${name} profile`}
           />
           <h4>{name}</h4>
         </Link>
@@ -30,13 +37,21 @@ const PostItem = ({ post: { _id, text, name, avatar, user, likes, comments, date
           <Moment format="YYYY/MM/DD">{date}</Moment>
         </p>
         {showActions && <>
-          <button onClick={() => dispatch(addLike(_id))} type="button" className="btn btn-light">
+          <button disabled={onLike} onClick={() => {
+            dispatch(addLike(_id))
+            setOnLike(n => !n);
+            setOnDisLike(false);
+          }} type="button" className="btn btn-light">
           <i className="fas fa-thumbs-up"></i>{' '}
           {likes.length > 0 && (
             <span>{likes.length}</span>
           )}
         </button>
-        <button onClick={() => dispatch(removeLike(_id))} type="button" className="btn btn-light">
+        <button disabled={onDisLike} onClick={() => {
+          dispatch(removeLike(_id))
+          setOnDisLike(n => !n);
+          setOnLike(false);
+          }} type="button" className="btn btn-light">
           <i className="fas fa-thumbs-down"></i>
         </button>
         <Link to={`/posts/${_id}`} className="btn btn-primary">
