@@ -23,7 +23,10 @@ const Profile = ({ match }) => {
   return (
 
     <>
-      {profile === null || loading ? <Spinner /> : (
+      {profile === null || loading ? (<>
+      <h4 className="text-center">if it's still loading then the user has not created a profile...</h4>
+      <Spinner />
+      </>) : (
         <>
           <Link to="/profiles" className="btn btn-light">
             Back to profiles

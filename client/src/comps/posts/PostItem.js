@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Moment from 'react-moment'
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,11 +11,6 @@ const PostItem = ({ post: { _id, text, name, avatar, user, likes, comments, date
   const [onDisLike,setOnDisLike] = useState(false)
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-
-  useEffect(() => {
-console.log(likes);
-
-},[likes.length])
 
   return (
     <div className="post bg-white p-1 my-1" data-aos="zoom-in">
