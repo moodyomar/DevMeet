@@ -4,6 +4,7 @@ const gravatar = require("gravatar")
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../../middleware/auth')
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User')
@@ -69,5 +70,41 @@ router.post("/", [
   }
 
 });
+
+// @route   PATCH api/users
+// @desc    Add user to favorites
+// @access  Private
+router.patch("/addtofav", auth, async (req, res) => {
+  try {
+
+    let {favorites} = req.body
+    let tmp = [];
+    const user = await User.findOne({ _id: req.user.id });
+    if(user){
+      tmp = [...user.favorites,favorites]
+      await User.updateOne({ _id: req.user.id }, {favorites:tmp});
+    }
+
+    res.json(user.favorites)
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+
+})
+
+// @route   GET api/users
+// @desc    Get users added to favorites
+// @access  Private
+router.get("/favorites", auth, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.user.id });
+    res.json(user.favorites);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+})
 
 module.exports = router;

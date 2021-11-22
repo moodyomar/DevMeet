@@ -9,7 +9,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE
+  CLEAR_PROFILE,
+  ADD_TO_FAVORITES
 } from '../actions/types';import setAuthToken from '../utils/setAuthToken';
 
 import { API_URL } from '../utils/api';
@@ -30,6 +31,31 @@ try {
     type:AUTH_ERROR,
   })
 }
+}
+
+// Add User to favorites
+export const addToFavorites = userId => async dispatch => {
+  try {
+    const res = await axios.patch(`${API_URL}/api/users/addtofav`, {favorites:userId});
+    console.log(userId);
+    console.log(res);
+    console.log(res.data);
+    
+    dispatch({
+      type: ADD_TO_FAVORITES,
+      payload: userId
+    });
+    toast.success('User have been added to favorites!');
+  } catch (err) {
+    const errors = err.response.data.errors
+    if (errors) {
+      errors.forEach(error => toast.error(error.msg))
+    }
+    // dispatch({
+    //   type: PROFILE_ERROR,
+    //   payload: { msg: err.response.statusText, status: err.response.status }
+    // })
+  }
 }
 
 

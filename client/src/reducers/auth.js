@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
+  ADD_TO_FAVORITES,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,15 @@ const initialState = {
 
 export const auth = (state = initialState, { type, payload }) => {
   switch (type) {
+    case ADD_TO_FAVORITES:
+      console.log("user is => ",state.user);
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: {...state.user,favorites:[...state.user.favorites,payload]}
+      };
+
     case USER_LOADED:
       return {
         ...state,
