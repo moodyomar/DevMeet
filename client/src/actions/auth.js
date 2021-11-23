@@ -11,33 +11,33 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
   ADD_TO_FAVORITES
-} from '../actions/types';import setAuthToken from '../utils/setAuthToken';
+} from '../actions/types'; import setAuthToken from '../utils/setAuthToken';
 
 import { API_URL } from '../utils/api';
 
 // Load User
 export const loadUser = () => async dispatch => {
-  if(localStorage.token){
+  if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
-try {
-  const res = await axios.get(`${API_URL}/api/auth`);
-  dispatch({
-    type:USER_LOADED,
-    payload:res.data
-  })
-} catch (error) {
-  dispatch({
-    type:AUTH_ERROR,
-  })
-}
+  try {
+    const res = await axios.get(`/api/auth`);
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    })
+  } catch (error) {
+    dispatch({
+      type: AUTH_ERROR,
+    })
+  }
 }
 
 // Add User to favorites
 export const addToFavorites = userId => async dispatch => {
   try {
-    await axios.patch(`${API_URL}/api/users/addtofav`, {favorites:userId});
-    
+    await axios.patch(`/api/users/addtofav`, { favorites: userId });
+
     dispatch({
       type: ADD_TO_FAVORITES,
       payload: userId
@@ -57,23 +57,23 @@ export const addToFavorites = userId => async dispatch => {
 
 
 // Register User - with inside dispatch + mapStateToProps
-export const register = ({name,email,password}) => async dispatch => {
+export const register = ({ name, email, password }) => async dispatch => {
 
   try {
-    const res = await axios.post(`${API_URL}/api/users`,{name,email,password})
+    const res = await axios.post(`/api/users`, { name, email, password })
     dispatch({
-      type:REGISTER_SUCCESS,
-      payload:res.data
+      type: REGISTER_SUCCESS,
+      payload: res.data
     })
-    dispatch(loadUser()); 
+    dispatch(loadUser());
     toast.success(`Welcome to DevMeet ${name.split(' ')[0]} 👋`)
   } catch (err) {
     const errors = err.response.data.errors
-    if(errors){
+    if (errors) {
       errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
-      type:REGISTER_FAIL
+      type: REGISTER_FAIL
     })
   }
 }
@@ -81,23 +81,23 @@ export const register = ({name,email,password}) => async dispatch => {
 
 
 // Login User - with outside dispatch + hooks
-export const login = (email,password) => async dispatch => {
+export const login = (email, password) => async dispatch => {
 
   try {
-    const res = await axios.post(`${API_URL}/api/auth`,{email,password})
+    const res = await axios.post(`/api/auth`, { email, password })
     dispatch({
-      type:LOGIN_SUCCESS,
-      payload:res.data
+      type: LOGIN_SUCCESS,
+      payload: res.data
     })
     dispatch(loadUser());
     toast.success("Logged in successfully")
   } catch (err) {
     const errors = err.response.data.errors
-    if(errors){
+    if (errors) {
       errors.forEach(error => toast.error(error.msg))
     }
     dispatch({
-      type:LOGIN_FAIL
+      type: LOGIN_FAIL
     })
   }
 }
@@ -105,7 +105,7 @@ export const login = (email,password) => async dispatch => {
 
 // Logout / Clear Profile
 export const logout = () => dispatch => {
-  dispatch({type:CLEAR_PROFILE})
-  dispatch({type:LOGOUT})
+  dispatch({ type: CLEAR_PROFILE })
+  dispatch({ type: LOGOUT })
   toast.dark("See you later 👋")
 }
