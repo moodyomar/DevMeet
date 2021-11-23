@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
-import { addToFavorites } from '../../actions/auth';
+import { addToFavorites, deleteFromFavorites } from '../../actions/auth';
 
 
 const ProfileItem = ({ profile: {
@@ -23,8 +23,8 @@ const ProfileItem = ({ profile: {
         </Link>
         {auth.isAuthenticated ?
           auth.user?.favorites?.includes(_id) ?
-            <Link to={`#`} className="btn btn-dark">
-              <i className="fa fa-star"></i> unfollow
+            <Link to={`#`} onClick={() => dispatch(deleteFromFavorites(_id))} className="btn btn-dark">
+              <i className="fa fa-star"></i> Following
             </Link>
             :
             <Link to={`#`} onClick={() => dispatch(addToFavorites(_id))} className="btn btn-dark">

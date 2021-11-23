@@ -91,7 +91,29 @@ router.patch("/addtofav", auth, async (req, res) => {
     console.log(err);
     res.status(400).json(err);
   }
+})
 
+// @route   DELETE api/users
+// @desc    Delete user from favorites
+// @access  Private
+router.delete("/delfromfav/:id", auth, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.user.id });
+    if(user){
+      // console.log(user);
+      favUsers = [...user.favorites];
+      console.log('favUsers ',favUsers);
+      let tmp = favUsers.filter(favUser => favUser !== req.params.id);
+      await User.updateOne({ _id: req.user.id }, {favorites:tmp});
+
+    }
+    
+    res.json(user.favorites)
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
 })
 
 // @route   GET api/users

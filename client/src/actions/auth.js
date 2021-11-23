@@ -10,7 +10,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
-  ADD_TO_FAVORITES
+  ADD_TO_FAVORITES,
+  DELETE_FROM_FAVORITES
 } from '../actions/types'; import setAuthToken from '../utils/setAuthToken';
 
 
@@ -47,10 +48,23 @@ export const addToFavorites = userId => async dispatch => {
     if (errors) {
       errors.forEach(error => toast.error(error.msg))
     }
-    // dispatch({
-    //   type: PROFILE_ERROR,
-    //   payload: { msg: err.response.statusText, status: err.response.status }
-    // })
+  }
+}
+// Delete User from favorites
+export const deleteFromFavorites = userId => async dispatch => {
+  try {
+    await axios.delete(`/api/users/delfromfav/${userId}`);
+
+    dispatch({
+      type: DELETE_FROM_FAVORITES,
+      payload: userId
+    });
+    toast.success('User have been Unfollowed');
+  } catch (err) {
+    const errors = err.response.data.errors
+    if (errors) {
+      errors.forEach(error => toast.error(error.msg))
+    }
   }
 }
 
