@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getProfiles } from '../../actions/profile';
 
 import Spinner from '../layout/Spinner';
@@ -61,15 +62,18 @@ const Favorites = () => {
         
         </div>
         </div>
-        <div className="profiles">
-          {profiles.length > 0 && user ? (
+        <div className="profiles text-center">
+          {profiles.length > 0 && user?.favorites?.length > 0 ? (
             profiles
-            .filter(profile => user.favorites.includes(profile._id) )
+            .filter(profile => user?.favorites?.includes(profile._id) )
             .filter(profile => skills.length < 1 ? profile : profile.skills.some(r => skills.includes(r.toUpperCase())))
             .map(profile => (
               <ProfileItem key={profile._id} profile={profile}/>
             ))
-          ) : <h4>No profiles found ....</h4>}
+          ) : <h4 className=" my-3"><span className="lead">No profiles found.</span><br/>Looks like you haven't followed any developer yet ....</h4>
+          }
+                  <Link to="/profiles" className="btn btn-light"
+          ><i className="fa icon-sm fa-users text-primary"></i> Developers</Link>
         </div>
       </>}
     </>

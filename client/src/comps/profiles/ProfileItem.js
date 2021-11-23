@@ -22,7 +22,7 @@ const ProfileItem = ({ profile: {
           <i className="fas fa-user-circle"></i>  Profile
         </Link>
         {auth.isAuthenticated ?
-          auth.user?.favorites.includes(_id) ?
+          auth.user?.favorites?.includes(_id) ?
             <Link to={`#`} className="btn btn-dark">
               <i className="fa fa-star"></i> unfollow
             </Link>
