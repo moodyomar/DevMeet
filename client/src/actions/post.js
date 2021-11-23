@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { toast } from "react-toastify";
 import { ADD_COMMENT, ADD_POST, DELETE_POST, GET_POST, GET_POSTS, POST_ERROR, REMOVE_COMMENT, UPDATE_LIKES } from "../actions/types"
-import { API_URL } from '../utils/api';
 
 
 // Get Posts

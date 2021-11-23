@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { API_URL } from '../utils/api';
 import { toast } from "react-toastify";
 import { CLEAR_PROFILE, ACCOUNT_DELETED, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, GET_PROFILES, GET_REPOS } from './types';
 

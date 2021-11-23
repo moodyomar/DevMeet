@@ -13,7 +13,6 @@ import {
   ADD_TO_FAVORITES
 } from '../actions/types'; import setAuthToken from '../utils/setAuthToken';
 
-import { API_URL } from '../utils/api';
 
 // Load User
 export const loadUser = () => async dispatch => {
