@@ -5,13 +5,11 @@ import { addToFavorites } from '../../actions/auth';
 
 
 const ProfileItem = ({ profile: {
-  user, status, company, location, skills
+  user, status, company, location, skills , _id
 } }) => {
 
   const dispatch = useDispatch();
   const { auth } = useSelector(state => state)
-  console.log(auth.user);
-
 
   return (
     <div className="profile bg-light" data-aos="zoom-in">
@@ -24,15 +22,15 @@ const ProfileItem = ({ profile: {
           <i className="fas fa-user-circle"></i>  Profile
         </Link>
         {auth.isAuthenticated ?
-          auth.user?.favorites.includes(user._id) ?
+          auth.user?.favorites.includes(_id) ?
             <Link to={`#`} className="btn btn-dark">
               <i className="fa fa-star"></i> unfollow
             </Link>
             :
-            <Link to={`#`} onClick={() => dispatch(addToFavorites(user._id))} className="btn btn-dark">
+            <Link to={`#`} onClick={() => dispatch(addToFavorites(_id))} className="btn btn-dark">
               <i className="far fa-star"></i> Follow
             </Link>
-          : <Link to={`/login`} onClick={() => dispatch(addToFavorites(user._id))} className="btn btn-dark">
+          : <Link to={`/login`} className="btn btn-dark">
             <i className="far fa-star"></i> Login
           </Link>}
       </div>

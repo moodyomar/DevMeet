@@ -36,10 +36,7 @@ try {
 // Add User to favorites
 export const addToFavorites = userId => async dispatch => {
   try {
-    const res = await axios.patch(`${API_URL}/api/users/addtofav`, {favorites:userId});
-    console.log(userId);
-    console.log(res);
-    console.log(res.data);
+    await axios.patch(`${API_URL}/api/users/addtofav`, {favorites:userId});
     
     dispatch({
       type: ADD_TO_FAVORITES,

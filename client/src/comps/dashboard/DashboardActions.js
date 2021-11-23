@@ -7,6 +7,8 @@ const DashboardActions = () => {
 return(
 
 <div className="dash-buttons">
+  <Link to="/favorites" className="btn btn-light"
+    ><i className="fas fa-graduation-cap text-primary"></i> Devs I'm Following</Link>
         <Link to="/edit-profile" className="btn btn-light"
           ><i className="fas fa-user-circle text-primary"></i> Edit Profile</Link
         >
