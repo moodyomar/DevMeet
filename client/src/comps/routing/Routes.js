@@ -13,6 +13,7 @@ import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
 import AutoScrollUp from '../routing/AutoScrollUp'
+import Favorites from '../favorites/Favorites';
 
 const Routes = () => { 
 
@@ -31,6 +32,7 @@ return(
     <PrivateRoute exact path="/add-experience" component={AddExperience} />
     <PrivateRoute exact path="/add-education" component={AddEducation} />
     <PrivateRoute exact path="/posts" component={Posts} />
+    <PrivateRoute exact path="/favorites" component={Favorites} />
     <PrivateRoute exact path="/posts/:id" component={Post} />
     <Route path="*" component={NotFound} />
   </Switch>
