@@ -29,9 +29,11 @@ export const auth = (state = initialState, { type, payload }) => {
       };
 
       case DELETE_FROM_FAVORITES:
-        return {...state,
-          user:state.user.favorites.filter(fav => fav !== payload),
-          loading:false};
+        return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user:{...state.user,favorites:[...state.user.favorites.filter(fav => fav !== payload)]}};
 
     case USER_LOADED:
       return {
